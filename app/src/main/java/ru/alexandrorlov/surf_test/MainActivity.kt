@@ -3,41 +3,41 @@ package ru.alexandrorlov.surf_test
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import ru.alexandrorlov.surf_test.ui.theme.Surf_testTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.LaunchedEffect
+import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.debounce
+import ru.alexandrorlov.surf_test.navigation.NavigationGraph
+import ru.alexandrorlov.surf_test.navigation.NavigationManager
+import ru.alexandrorlov.surf_test.ui.theme.SurfTestTheme
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    internal lateinit var navigationManager: NavigationManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            Surf_testTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+            val navController = rememberNavController()
+            LaunchedEffect(key1 = Unit) {
+                navigationManager.sharedFlow.debounce { 100L }.collect {
+                    if (it.destination == "OnBack") {
+                        navController.popBackStack()
+                    } else {
+                        navController.navigate(it.destination)
+                    }
+                }
+            }
+
+            SurfTestTheme {
+                Scaffold { paddingValues ->
+                    NavigationGraph(navController = navController)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    Surf_testTheme {
-        Greeting("Android")
     }
 }
