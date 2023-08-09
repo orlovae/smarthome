@@ -10,9 +10,9 @@
 3. ViewModel
 
 Технические детали реализации:
-Compose
-Хранение данных в Room, получение/удаление/изменение данных используя Flow & Coroutines.
-Архитектурное решение MVVM+State
+1. Compose
+2. Хранение данных в Room, получение/удаление/изменение данных используя Flow & Coroutines.
+3. Архитектурное решение MVVM+State
 
 ![image](https://github.com/orlovae/Surf_test/assets/24921449/54c84b1f-5f0f-4a1b-960e-c061ee8b0674)
 ![image](https://github.com/orlovae/Surf_test/assets/24921449/7a4ad603-b14a-42bd-a02c-43f85f07549b)
