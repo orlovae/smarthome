@@ -1,12 +1,12 @@
-package ru.alexandrorlov.smarthome.model.api.camera
+package ru.alexandrorlov.smarthome.model.remote.camera
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Data(
+data class DataRemote(
     @SerialName("room")
     val room: List<String>,
     @SerialName("cameras")
-    val cameras: List<Camera>
+    val cameraRemotes: List<CameraRemote>
 )

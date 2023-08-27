@@ -1,4 +1,4 @@
-package ru.alexandrorlov.smarthome.remote
+package ru.alexandrorlov.smarthome.data.remote
 
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -7,11 +7,11 @@ import io.ktor.client.request.*
 import ru.alexandrorlov.smarthome.Result
 import ru.alexandrorlov.smarthome.config.RemoteConfig.QUERY_PARAMETER_CAMERAS
 import ru.alexandrorlov.smarthome.config.RemoteConfig.QUERY_PARAMETER_DOORS
-import ru.alexandrorlov.smarthome.model.api.camera.CamerasApi
-import ru.alexandrorlov.smarthome.model.api.door.DoorsApi
+import ru.alexandrorlov.smarthome.model.remote.camera.CamerasApi
+import ru.alexandrorlov.smarthome.model.remote.door.DoorsApi
 
 
-class ApiServiceImpl(private val client: HttpClient) : ApiService {
+class RepositoryRemoteImpl(private val client: HttpClient) : ApiService {
     override suspend fun getCameras(): Result<Any> {
         return try {
             Result.Success(

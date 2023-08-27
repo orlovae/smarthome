@@ -1,4 +1,4 @@
-package ru.alexandrorlov.smarthome.remote
+package ru.alexandrorlov.smarthome.data.remote
 
 import ru.alexandrorlov.smarthome.Result
 

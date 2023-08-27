@@ -1,13 +1,13 @@
-package ru.alexandrorlov.smarthome.model.api.camera
+package ru.alexandrorlov.smarthome.model.remote.door
 
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CamerasApi(
+data class DoorsApi(
     @SerialName("success")
-    val success: Boolean?,
+    val success: Boolean,
     @SerialName("data")
-    val data: Data?
+    val data: List<DoorRemote>
 )

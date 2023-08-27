@@ -1,4 +1,4 @@
-package ru.alexandrorlov.smarthome.remote
+package ru.alexandrorlov.smarthome.data.remote
 
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
@@ -14,7 +14,7 @@ import ru.alexandrorlov.smarthome.config.RemoteConfig.BASE_PATH
 
 object NetworkClient {
     fun create(): ApiService {
-        return ApiServiceImpl(
+        return RepositoryRemoteImpl(
             client = HttpClient(Android) {
                 install(Logging) {
                     level = LogLevel.ALL
