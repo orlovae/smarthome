@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">smarthome</string>
+    <!-- Error -->
+    <string name="exception_unknownHostException">Please check the connection, there is no internet access</string>
+    <string name="exception_Exception">Something went wrong</string>
 </resources>

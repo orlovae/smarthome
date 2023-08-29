@@ -1,13 +1,23 @@
-package ru.alexandrorlov.smarthome.data.local
+package ru.alexandrorlov.smarthome.di
 
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import ru.alexandrorlov.smarthome.model.entity.CameraEntity
 import ru.alexandrorlov.smarthome.model.entity.DoorEntity
 import ru.alexandrorlov.smarthome.model.entity.RoomCamera
+import javax.inject.Singleton
 
-object Realm {
-    private val realm: Realm by lazy {
+@Module
+@InstallIn(SingletonComponent::class)
+class RealmModule {
+
+    @Provides
+    @Singleton
+    fun providesRealmDatabase(): Realm {
         val configuration =
             RealmConfiguration.create(
                 schema = setOf(
@@ -16,10 +26,6 @@ object Realm {
                     DoorEntity::class
                 )
             )
-        Realm.open(configuration)
-    }
-
-    fun getInstance(): Database {
-        return RepositoryLocalImpl(realm)
+        return Realm.open(configuration)
     }
 }

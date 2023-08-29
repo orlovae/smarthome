@@ -4,6 +4,8 @@ import ru.alexandrorlov.smarthome.model.entity.CameraEntity
 import ru.alexandrorlov.smarthome.model.entity.DoorEntity
 import ru.alexandrorlov.smarthome.model.remote.camera.CameraRemote
 import ru.alexandrorlov.smarthome.model.remote.door.DoorRemote
+import ru.alexandrorlov.smarthome.model.ui.CameraUi
+import ru.alexandrorlov.smarthome.model.ui.DoorUi
 
 fun CameraRemote.toRealmCamera(): CameraEntity {
     return CameraEntity().apply {
@@ -24,4 +26,25 @@ fun DoorRemote.toRealmDoor(): DoorEntity {
         favorites = this@toRealmDoor.favorites
         snapshotURL = this@toRealmDoor.snapshot
     }
+}
+
+fun CameraEntity.toCameraUi(): CameraUi {
+    return CameraUi(
+        id = this.id,
+        name = this.name,
+        snapshotURL = this.snapshotURL,
+        room = this.room,
+        favorites = this.favorites,
+        rec = this.rec
+    )
+}
+
+fun DoorEntity.toDoorUi(): DoorUi {
+    return DoorUi(
+        id = this.id,
+        name = this.name,
+        room = this.room,
+        favorites = this.favorites,
+        snapshotURL = this.snapshotURL
+    )
 }
