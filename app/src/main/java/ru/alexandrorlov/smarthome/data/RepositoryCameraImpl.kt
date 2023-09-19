@@ -15,7 +15,7 @@ class RepositoryCameraImpl constructor(
     private val remote: ApiCamera,
     private val local: DatabaseCamera
 ) : RepositoryCamera {
-    override fun  getAllCameras(): Flow<List<CameraUi>> = flow {
+    override fun getAllCameras(): Flow<List<CameraUi>> = flow {
         val listCameraEntity = local.getAllCameraEntity()
         emit(listCameraEntity.map { it.toCameraUi() })
     }.flowOn(Dispatchers.IO)

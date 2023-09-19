@@ -15,7 +15,6 @@ class RepositoryRemoteCameraImpl @Inject constructor(
         return try {
             client.get(QUERY_PARAMETER_CAMERAS).body<CamerasApi>().dataRemote?.cameraRemotes
                 ?: emptyList()
-
         } catch (ex: Exception) {
             emptyList()
         }

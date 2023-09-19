@@ -3,4 +3,11 @@
     <!-- Error -->
     <string name="exception_unknownHostException">Please check the connection, there is no internet access</string>
     <string name="exception_Exception">Something went wrong</string>
+    <!-- LoadingScreen -->
+    <string name="loading">Data is being downloaded, please wait.</string>
+    <!-- TabsNavigation -->
+    <string name="cameras">Cameras</string>
+    <string name="doors">Doors</string>
+    <!-- Card -->
+    <string name="record">REC</string>
 </resources>

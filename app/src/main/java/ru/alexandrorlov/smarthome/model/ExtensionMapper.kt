@@ -1,5 +1,6 @@
 package ru.alexandrorlov.smarthome.model
 
+import ru.alexandrorlov.smarthome.config.Ui.NO_TITLE_ROOM
 import ru.alexandrorlov.smarthome.model.entity.CameraEntity
 import ru.alexandrorlov.smarthome.model.entity.DoorEntity
 import ru.alexandrorlov.smarthome.model.remote.camera.CameraRemote
@@ -12,7 +13,7 @@ fun CameraRemote.toRealmCamera(): CameraEntity {
         id = this@toRealmCamera.id
         name = this@toRealmCamera.name
         snapshotURL = this@toRealmCamera.snapshotURL
-        room = this@toRealmCamera.room
+        room = this@toRealmCamera.room ?: NO_TITLE_ROOM
         favorites = this@toRealmCamera.favorites
         rec = this@toRealmCamera.rec
     }
@@ -22,7 +23,7 @@ fun DoorRemote.toRealmDoor(): DoorEntity {
     return DoorEntity().apply {
         id = this@toRealmDoor.id
         name = this@toRealmDoor.name
-        room = this@toRealmDoor.room
+        room = this@toRealmDoor.room ?: NO_TITLE_ROOM
         favorites = this@toRealmDoor.favorites
         snapshotURL = this@toRealmDoor.snapshot
     }
@@ -33,7 +34,7 @@ fun CameraEntity.toCameraUi(): CameraUi {
         id = this.id,
         name = this.name,
         snapshotURL = this.snapshotURL,
-        room = this.room,
+        room = this.room ?: NO_TITLE_ROOM,
         favorites = this.favorites,
         rec = this.rec
     )
@@ -43,7 +44,7 @@ fun DoorEntity.toDoorUi(): DoorUi {
     return DoorUi(
         id = this.id,
         name = this.name,
-        room = this.room,
+        room = this.room ?: NO_TITLE_ROOM,
         favorites = this.favorites,
         snapshotURL = this.snapshotURL
     )

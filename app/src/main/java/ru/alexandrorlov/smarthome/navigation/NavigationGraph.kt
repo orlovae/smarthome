@@ -5,7 +5,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import ru.alexandrorlov.smarthome.ui.camera.CameraScreen
+import ru.alexandrorlov.smarthome.config.NavigationDestination.DESTINATION_CAMERA
+import ru.alexandrorlov.smarthome.ui.camera.CameraStateManger
 
 @Composable
 fun NavigationGraph(
@@ -13,12 +14,12 @@ fun NavigationGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = "camera"
+        startDestination = DESTINATION_CAMERA
     ) {
         composable(
-            route = "camera"
+            route = DESTINATION_CAMERA
         ) {
-            CameraScreen(
+            CameraStateManger(
                 viewModel = hiltViewModel()
             )
         }
